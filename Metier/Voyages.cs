@@ -17,8 +17,12 @@ namespace BoVoyage2.Metier
         public int PlacesDisponibles { get; set; }
         public decimal TarifToutCompris { get; set; }
 
-        [ForeignKey("NumeroUniqueAgence")]
+        [ForeignKey("NumeroUniqueDestination")]
         public virtual Destinations Destinations { get; set; }
+        public int NumeroUniqueDestination { get; set; }
+
+        [ForeignKey("NumeroUniqueAgence")]
+        public virtual AgencesVoyage AgencesVoyage { get; set; }
         public int NumeroUniqueAgence { get; set; }
     }
 }
