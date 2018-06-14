@@ -80,7 +80,7 @@ namespace BoVoyage2.UI
                     Email = ConsoleSaisie.SaisirChaineObligatoire("Email : "),
                     Telephone = ConsoleSaisie.SaisirChaineObligatoire("Telephone : "),
                     DateNaissance = ConsoleSaisie.SaisirDateObligatoire("Date de naissance : "),
-              };
+                };
 
                 int age = DateTime.Now.Year - client.DateNaissance.Year;
                 client.Age = age;

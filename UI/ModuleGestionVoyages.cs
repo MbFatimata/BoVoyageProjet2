@@ -59,10 +59,56 @@ namespace BoVoyage2.UI
         {
             using (var db = new BaseDonnees())
             {
-                var client = new Clients
+                var destination1 = new Destinations
                 {
+                    Continent = "Europe",
+                    Pays = "France",
+                    Region = "Normandie",
+                    Description ="Venez visiter notre manifique région",
                 };
+                var destination2 = new Destinations
+                {
+                    Continent = "Afrique",
+                    Pays = "Maroc",
+                    Region = "Marrakech et ses alentours",
+                    Description = "Venez visiter notre manifique région",
+                };
+                var destination3 = new Destinations
+                {
+                    Continent = "Europe",
+                    Pays = "Allemagne",
+                    Region = "Baviere et ses alentours",
+                    Description = "Venez visiter notre manifique région",
+                };
+                var destination4 = new Destinations
+                {
+                    Continent = "Amerique",
+                    Pays = "Etats-Unis",
+                    Region = "Texas",
+                    Description = "Venez visiter notre manifique région",
+                };
+                var agence1 = new AgencesVoyage
+                {
+                    Nom ="Nouvelles frontières",
+                };
+                var agence2 = new AgencesVoyage
+                {
+                    Nom = "Thomas Cook",
+                };
+                var agence3 = new AgencesVoyage
+                {
+                    Nom = "Club med",
+                };
+                db.Destinations.Add(destination1);
+                db.Destinations.Add(destination2);
+                db.Destinations.Add(destination3);
+                db.Destinations.Add(destination4);
+                db.AgencesVoyage.Add(agence1);
+                db.AgencesVoyage.Add(agence2);
+                db.AgencesVoyage.Add(agence3);
+                db.SaveChanges();
             }
+            
         }
     }
 }
