@@ -46,6 +46,14 @@ namespace BoVoyage2.UI
             {
                 FonctionAExecuter = this.AjouterClient
             });
+            this.menu.AjouterElement(new ElementMenu("3", "Rechercher des clients")
+            {
+                FonctionAExecuter = this.RechercherClients
+            });
+            this.menu.AjouterElement(new ElementMenu("4", "Supprimer un client")
+            {
+                FonctionAExecuter = this.SupprimerClient
+            });
             this.menu.AjouterElement(new ElementMenuQuitterMenu("R", "Revenir au menu principal..."));
         }
 
@@ -68,17 +76,17 @@ namespace BoVoyage2.UI
         
         private void AjouterClient()
         {
-            ConsoleHelper.AfficherEntete("Ajoueter Client");
+            ConsoleHelper.AfficherEntete("Ajouter Client");
             using (var db = new BaseDonnees())
             {
                var client = new Clients
                 {
-                    Civilite = ConsoleSaisie.SaisirChaineObligatoire("Civilite : "),
+                    Civilite = ConsoleSaisie.SaisirChaineObligatoire("Civilité : "),
                     Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : "),
-                    Prenom = ConsoleSaisie.SaisirChaineObligatoire("Prenom : "),
+                    Prenom = ConsoleSaisie.SaisirChaineObligatoire("Prénom : "),
                     Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse : "),
                     Email = ConsoleSaisie.SaisirChaineObligatoire("Email : "),
-                    Telephone = ConsoleSaisie.SaisirChaineObligatoire("Telephone : "),
+                    Telephone = ConsoleSaisie.SaisirChaineObligatoire("Téléphone : "),
                     DateNaissance = ConsoleSaisie.SaisirDateObligatoire("Date de naissance : "),
                 };
 
@@ -89,6 +97,15 @@ namespace BoVoyage2.UI
             }
 
 
+        }
+
+        private void RechercherClients()
+        {
+            ConsoleHelper.AfficherEntete("Rechercher des clients");
+        }
+        private void SupprimerClient()
+        {
+            ConsoleHelper.AfficherEntete("Supprimer un client");
         }
     }
 }
