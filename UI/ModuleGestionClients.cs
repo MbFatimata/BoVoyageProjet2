@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BoVoyage.Framework.UI;
 using BoVoyage2.Metier;
+using BoVoyage2.Dal;
 
 
 namespace BoVoyage2.UI
@@ -31,11 +32,11 @@ namespace BoVoyage2.UI
             this.menu = new Menu("Gestion 1");
             this.menu.AjouterElement(new ElementMenu("1", "Afficher les clients")
             {
-                FonctionAExecuter = this.Afficher
+                FonctionAExecuter = this.AfficherClients
             });
             this.menu.AjouterElement(new ElementMenu("2", "Ajouter un client")
             {
-                FonctionAExecuter = this.Nouveau
+                FonctionAExecuter = this.AjouterClient
             });
             this.menu.AjouterElement(new ElementMenuQuitterMenu("R", "Revenir au menu principal..."));
         }
@@ -50,18 +51,17 @@ namespace BoVoyage2.UI
             this.menu.Afficher();
         }
 
-        private void Afficher()
+        private void AfficherClients()
         {
-            ConsoleHelper.AfficherEntete("Afficher");
-
+            ConsoleHelper.AfficherEntete("Afficher Clients");
             Console.WriteLine("TO DO");
+
         }
 
-        private void Nouveau()
-        {
-            ConsoleHelper.AfficherEntete("Nouveau");
 
-            Console.WriteLine("TO DO");
+        private void AjouterClient()
+        {
+            ConsoleHelper.AfficherEntete("Ajoueter Client");
         }
     }
 }
