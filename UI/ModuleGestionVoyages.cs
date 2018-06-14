@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BoVoyage.Framework.UI;
 using BoVoyage2.Metier;
+using BoVoyage2.Dal;
 
 namespace BoVoyage2.UI
 {
@@ -48,7 +49,12 @@ namespace BoVoyage2.UI
         }
         public void AjouterVoyage()
         {
-
+            using (var db = new BaseDonnees())
+            {
+                var client = new Clients
+                {
+                };
+            }
         }
     }
 }
