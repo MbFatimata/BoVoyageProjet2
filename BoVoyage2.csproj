@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A2385A68-D577-45DC-A763-E5E3CB6D13AA}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ExempleUtilisationBoVoyageFramework</RootNamespace>
+    <AssemblyName>ExempleUtilisationBoVoyageFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BoVoyage.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>_Lib\BoVoyage.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AgencesVoyage.cs">
+      <DependentUpon>BoVoyageBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Assurances.cs">
+      <DependentUpon>BoVoyageBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BoVoyageBase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BoVoyageBase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BoVoyageBase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BoVoyageBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BoVoyageBase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BoVoyageBase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Clients.cs">
+      <DependentUpon>BoVoyageBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\BaseDonnees.cs" />
+    <Compile Include="Destinations.cs">
+      <DependentUpon>BoVoyageBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DossiersReservation.cs">
+      <DependentUpon>BoVoyageBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Metier\AgencesVoyage.cs" />
+    <Compile Include="Metier\Assurances.cs" />
+    <Compile Include="Metier\Clients.cs" />
+    <Compile Include="Metier\Destinations.cs" />
+    <Compile Include="Metier\DossiersReservation.cs" />
+    <Compile Include="Metier\Participants.cs" />
+    <Compile Include="Metier\Voyages.cs" />
+    <Compile Include="Participants.cs">
+      <DependentUpon>BoVoyageBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Application.cs" />
+    <Compile Include="UI\ModuleGestionClients.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\ModuleGestionVoyages.cs" />
+    <Compile Include="Voyages.cs">
+      <DependentUpon>BoVoyageBase.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="BoVoyageBase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BoVoyageBase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BoVoyageBase.edmx.diagram">
+      <DependentUpon>BoVoyageBase.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="_Lib\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BoVoyageBase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BoVoyageBase.edmx</DependentUpon>
+      <LastGenOutput>BoVoyageBase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BoVoyageBase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BoVoyageBase.edmx</DependentUpon>
+      <LastGenOutput>BoVoyageBase.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
