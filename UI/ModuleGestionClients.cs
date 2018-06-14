@@ -16,8 +16,15 @@ namespace BoVoyage2.UI
         private static readonly List<InformationAffichage> strategieAffichageEntitesMetier =
             new List<InformationAffichage>
             {
-                InformationAffichage.Creer<Clients>(x=>x.NumeroUniqueClient, "NumeroUniqueClient", 3),
-                InformationAffichage.Creer<Clients>(x=>x.Nom, "Nom", 20),
+                InformationAffichage.Creer<Clients>(x=>x.NumeroUniqueClient, "NumeroUniqueClient", 10),
+                InformationAffichage.Creer<Clients>(x=>x.Nom, "Nom", 10),
+                InformationAffichage.Creer<Clients>(x=>x.Prenom, "Prenom", 10),
+                InformationAffichage.Creer<Clients>(x=>x.Adresse, "Adresse", 20),
+                InformationAffichage.Creer<Clients>(x=>x.Civilite, "Civilite", 10),
+                InformationAffichage.Creer<Clients>(x=>x.Email, "Email", 10),
+                InformationAffichage.Creer<Clients>(x=>x.Telephone, "Telephone", 10),
+                InformationAffichage.Creer<Clients>(x=>x.DateNaissance, "DateNaissance", 10),
+                InformationAffichage.Creer<Clients>(x=>x.Age, "Age", 10),
             };
         private Menu menu;
 
