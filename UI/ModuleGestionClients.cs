@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BoVoyage.Framework.UI;
 using BoVoyage2.Metier;
 using BoVoyage2.Dal;
+using System.Linq;
 
 
 namespace BoVoyage2.UI
@@ -54,15 +55,36 @@ namespace BoVoyage2.UI
         private void AfficherClients()
         {
             ConsoleHelper.AfficherEntete("Afficher Clients");
-            Console.WriteLine("TO DO");
-
+            var liste = Application.GetBaseDonnees().Clients.ToList();
+            ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetier);
         }
 
 
         private void AjouterClient()
         {
             ConsoleHelper.AfficherEntete("Ajoueter Client");
+            //using (var db = new BaseDonnees())
+            //{
+            //   var client = new Clients
+            //    {
+            //        Civilite = ConsoleSaisie.SaisirChaineObligatoire("Civilite : "),
+            //        Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : "),
+            //        Prenom = ConsoleSaisie.SaisirChaineObligatoire("Prenom : "),
+            //        Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse : "),
+            //        Email = ConsoleSaisie.SaisirChaineObligatoire("Email : "),
+            //        Telephone = ConsoleSaisie.SaisirChaineObligatoire("Telephone : "),
+            //        DateNaissance = ConsoleSaisie.SaisirDateObligatoire("Telephone : "),
+            //  };
+
+            //    int age = DateTime.Now.Year - client.DateNaissance.Year;
+            //    client.Age = age;
+            //    db.Clients.Add(client);
+            //    db.SaveChanges();
+            //}
+
+
         }
     }
 }
+
 

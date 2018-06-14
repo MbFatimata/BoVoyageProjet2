@@ -1,5 +1,6 @@
 ﻿using System;
 using BoVoyage.Framework.UI;
+using BoVoyage2.Dal;
 
 namespace BoVoyage2.UI
 {
@@ -42,6 +43,11 @@ namespace BoVoyage2.UI
             this.InitialiserMenuPrincipal();
 
             this.menuPrincipal.Afficher();
+        }
+
+        public static BaseDonnees GetBaseDonnees()
+        {
+            return new BaseDonnees();
         }
     }
 }
