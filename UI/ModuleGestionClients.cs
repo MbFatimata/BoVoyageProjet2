@@ -58,29 +58,28 @@ namespace BoVoyage2.UI
             var liste = Application.GetBaseDonnees().Clients.ToList();
             ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetier);
         }
-
-
+        
         private void AjouterClient()
         {
             ConsoleHelper.AfficherEntete("Ajoueter Client");
-            //using (var db = new BaseDonnees())
-            //{
-            //   var client = new Clients
-            //    {
-            //        Civilite = ConsoleSaisie.SaisirChaineObligatoire("Civilite : "),
-            //        Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : "),
-            //        Prenom = ConsoleSaisie.SaisirChaineObligatoire("Prenom : "),
-            //        Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse : "),
-            //        Email = ConsoleSaisie.SaisirChaineObligatoire("Email : "),
-            //        Telephone = ConsoleSaisie.SaisirChaineObligatoire("Telephone : "),
-            //        DateNaissance = ConsoleSaisie.SaisirDateObligatoire("Telephone : "),
-            //  };
+            using (var db = new BaseDonnees())
+            {
+               var client = new Clients
+                {
+                    Civilite = ConsoleSaisie.SaisirChaineObligatoire("Civilite : "),
+                    Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : "),
+                    Prenom = ConsoleSaisie.SaisirChaineObligatoire("Prenom : "),
+                    Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse : "),
+                    Email = ConsoleSaisie.SaisirChaineObligatoire("Email : "),
+                    Telephone = ConsoleSaisie.SaisirChaineObligatoire("Telephone : "),
+                    DateNaissance = ConsoleSaisie.SaisirDateObligatoire("Date de naissance : "),
+              };
 
-            //    int age = DateTime.Now.Year - client.DateNaissance.Year;
-            //    client.Age = age;
-            //    db.Clients.Add(client);
-            //    db.SaveChanges();
-            //}
+                int age = DateTime.Now.Year - client.DateNaissance.Year;
+                client.Age = age;
+                db.Clients.Add(client);
+                db.SaveChanges();
+            }
 
 
         }

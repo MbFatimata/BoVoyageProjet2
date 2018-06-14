@@ -20,7 +20,7 @@ namespace BoVoyage2.Metier
         public int Age { get; set; }
 
         [ForeignKey ("NumeroUniqueDossier")]
-        public DossiersReservation Dossiers { get; set; }
+        public virtual DossiersReservation Dossiers { get; set; }
         public int NumeroUniqueDossier { get; set; }
     }
 }

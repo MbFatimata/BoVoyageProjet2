@@ -4,7 +4,7 @@ namespace BoVoyage2.Metier
 {
     public class DossiersReservation
     {
-        public int NumeroUniqueDoosier { get; set; }
+        public int NumeroUniqueDossier { get; set; }
         public string NumeroCarteBancaire { get; set; }
         public decimal PrixTotal { get; set; }
         public int NombreParticipant { get; set; }
