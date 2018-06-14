@@ -10,6 +10,12 @@ namespace BoVoyage2.UI
 {
     public class ModuleGestionVoyages
     {
+        private static readonly List<InformationAffichage> strategieAffichageEntitesMetier =
+            new List<InformationAffichage>
+            {
+                InformationAffichage.Creer<Clients>(x=>x.NumeroUniqueClient, "NumeroUniqueClient", 3),
+                InformationAffichage.Creer<Clients>(x=>x.Nom, "Nom", 20),
+            };
         private Menu menu;
 
         public ModuleGestionVoyages(Application application)
@@ -44,7 +50,9 @@ namespace BoVoyage2.UI
         }
         public void AfficherVoyage()
         {
-
+            ConsoleHelper.AfficherEntete("Afficher Voyages");
+            var liste = Application.GetBaseDonnees().Voyages.ToList();
+            ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetier);
         }
         public void AjouterVoyage()
         {
