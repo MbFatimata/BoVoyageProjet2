@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace BoVoyage2.Metier
 {
     public class Destinations
     {
+        [Key]
         public int NumeroUniqueDestination { get; set; }
         public string Continent { get; set; }
         public string Pays { get; set; }

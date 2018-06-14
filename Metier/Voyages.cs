@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace BoVoyage2.Metier
 {
     public class Voyages
     {
+        [Key]
         public int NumeroUniqueVoyage { get; set; }
         public DateTime DateAller { get; set; }
         public DateTime DateRetour { get; set; }

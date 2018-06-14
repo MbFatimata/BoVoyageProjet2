@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace BoVoyage2.Metier
 {
     public class Participants
     {
+        [Key]
         public int NumeroUniqueParticipant { get; set; }
         public float Reduction { get; set; }
         public string Civilite { get; set; }

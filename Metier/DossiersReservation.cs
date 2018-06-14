@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-namespace BoVoyage2.Metier
+using System.ComponentModel.DataAnnotations;
 
+namespace BoVoyage2.Metier
 {
     public class DossiersReservation
     {
+        [Key]
         public int NumeroUniqueDossier { get; set; }
         public string NumeroCarteBancaire { get; set; }
         public decimal PrixTotal { get; set; }

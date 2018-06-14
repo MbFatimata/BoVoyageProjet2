@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace BoVoyage2.Metier
 {
     public class Clients
     {
+        [Key]
         public int NumeroUniqueClient { get; set; }
         public string Email { get; set; }
         public string Civilite { get; set; }
