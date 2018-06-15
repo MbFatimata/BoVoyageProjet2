@@ -16,15 +16,15 @@ namespace BoVoyage2.UI
         private static readonly List<InformationAffichage> strategieAffichageEntitesMetier =
             new List<InformationAffichage>
             {
-                InformationAffichage.Creer<Clients>(x=>x.NumeroUniqueClient, "NumeroUniqueClient", 10),
+                InformationAffichage.Creer<Clients>(x=>x.NumeroUniqueClient, "Id", 5),
                 InformationAffichage.Creer<Clients>(x=>x.Nom, "Nom", 10),
-                InformationAffichage.Creer<Clients>(x=>x.Prenom, "Prenom", 10),
-                InformationAffichage.Creer<Clients>(x=>x.Adresse, "Adresse", 20),
-                InformationAffichage.Creer<Clients>(x=>x.Civilite, "Civilite", 10),
-                InformationAffichage.Creer<Clients>(x=>x.Email, "Email", 10),
-                InformationAffichage.Creer<Clients>(x=>x.Telephone, "Telephone", 10),
-                InformationAffichage.Creer<Clients>(x=>x.DateNaissance, "DateNaissance", 10),
-                InformationAffichage.Creer<Clients>(x=>x.Age, "Age", 10),
+                InformationAffichage.Creer<Clients>(x=>x.Prenom, "Prénom", 10),
+                InformationAffichage.Creer<Clients>(x=>x.Adresse, "Adresse", 30),
+                InformationAffichage.Creer<Clients>(x=>x.Civilite, "Civilité", 10),
+                InformationAffichage.Creer<Clients>(x=>x.Email, "Email", 40),
+                InformationAffichage.Creer<Clients>(x=>x.Telephone, "Téléphone", 20),
+                InformationAffichage.Creer<Clients>(x=>x.DateNaissance, "Date de naissance", 20),
+                InformationAffichage.Creer<Clients>(x=>x.Age, "Age", 5),
             };
         private Menu menu;
 
@@ -69,17 +69,17 @@ namespace BoVoyage2.UI
 
         public void AfficherClients()
         {
-            ConsoleHelper.AfficherEntete("Afficher Clients");
+            ConsoleHelper.AfficherEntete("Afficher clients");
             var liste = Application.GetBaseDonnees().Clients.ToList();
             ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetier);
         }
-        
+
         private void AjouterClient()
         {
-            ConsoleHelper.AfficherEntete("Ajouter Client");
+            ConsoleHelper.AfficherEntete("Ajouter client");
             using (var db = new BaseDonnees())
             {
-               var client = new Clients
+                var client = new Clients
                 {
                     Civilite = ConsoleSaisie.SaisirChaineObligatoire("Civilité : "),
                     Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : "),
@@ -106,6 +106,21 @@ namespace BoVoyage2.UI
         private void SupprimerClient()
         {
             ConsoleHelper.AfficherEntete("Supprimer un client");
+
+            var liste = Application.GetBaseDonnees().Clients.ToList();
+            ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetier);
+
+            using (var db = new BaseDonnees())
+            {
+                var client = new Clients
+                {
+                    NumeroUniqueClient = ConsoleSaisie.SaisirEntierObligatoire("Entrez l'Id du client à supprimer :")
+                };
+
+                db.Clients.Attach(client);
+                db.Clients.Remove(client);
+                db.SaveChanges();
+            }
         }
     }
 }
