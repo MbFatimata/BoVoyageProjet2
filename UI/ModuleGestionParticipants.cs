@@ -15,16 +15,16 @@ namespace BoVoyage2.UI
         private static readonly List<InformationAffichage> strategieAffichageEntitesMetier =
             new List<InformationAffichage>
             {
-                InformationAffichage.Creer<Participants>(x=>x.NumeroUniqueParticipant, "NumeroUniqueParticipant", 10),
-                InformationAffichage.Creer<Participants>(x=>x.NumeroUniqueDossier, "NumeroUniqueDossier", 10),
+                InformationAffichage.Creer<Participants>(x=>x.NumeroUniqueParticipant, "NumeroUniqueParticipant", 30),
+                InformationAffichage.Creer<Participants>(x=>x.NumeroUniqueDossier, "NumeroUniqueDossier", 30),
                 InformationAffichage.Creer<Participants>(x=>x.Reduction, "Reduction", 10),
                 InformationAffichage.Creer<Participants>(x=>x.Nom, "Nom", 10),
                 InformationAffichage.Creer<Participants>(x=>x.Prenom, "Prenom", 10),
                 InformationAffichage.Creer<Participants>(x=>x.Adresse, "Adresse", 20),
                 InformationAffichage.Creer<Participants>(x=>x.Civilite, "Civilite", 10),
                 InformationAffichage.Creer<Participants>(x=>x.Telephone, "Telephone", 10),
-                InformationAffichage.Creer<Participants>(x=>x.DateNaissance, "DateNaissance", 10),
-                InformationAffichage.Creer<Participants>(x=>x.Age, "Age", 10),
+                InformationAffichage.Creer<Participants>(x=>x.DateNaissance, "DateNaissance", 15),
+                InformationAffichage.Creer<Participants>(x=>x.Age, "Age", 3),
             };
         private Menu menu;
 

@@ -19,6 +19,8 @@ namespace BoVoyage2.UI
                 InformationAffichage.Creer<Voyages>(x=>x.TarifToutCompris, "TarfiToutCompris", 10),
                 InformationAffichage.Creer<Voyages>(x=>x.Destinations, "Destinations", 30),
                 InformationAffichage.Creer<Voyages>(x=>x.NumeroUniqueAgence, "NumeroUniqueAgence", 20),
+                
+
             };
         private Menu menu;
 
@@ -40,6 +42,14 @@ namespace BoVoyage2.UI
             {
                 FonctionAExecuter = this.AjouterVoyage
             });
+            this.menu.AjouterElement(new ElementMenu("3", "Rechercher un voyage")
+            {
+                FonctionAExecuter = this.RechercherVoyage
+            });
+            this.menu.AjouterElement(new ElementMenu("4", "Supprimer un voyage")
+            {
+                FonctionAExecuter = this.SupprimerVoyage
+            });
             this.menu.AjouterElement(new ElementMenuQuitterMenu("R", "Revenir au menu principal..."));
         }
 
@@ -59,6 +69,7 @@ namespace BoVoyage2.UI
 
             var liste = Application.GetBaseDonnees().Voyages.ToList();
             ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetier);
+
         }
 
         public void AjouterVoyage()
@@ -72,19 +83,33 @@ namespace BoVoyage2.UI
                     Pays = ConsoleSaisie.SaisirChaineObligatoire("Pays : "),
                     Region = ConsoleSaisie.SaisirChaineObligatoire("Region : "),
                     Description = ConsoleSaisie.SaisirChaineObligatoire("Description: "),
+                    
                 };
                 var agence = new AgencesVoyage
                 {
                     Nom = ConsoleSaisie.SaisirChaineObligatoire("Agence : "),
                 };
+
                 var voyage = new Voyages
-                {
-                    DateAller = ConsoleSaisie.SaisirDateObligatoire("Date aller (j+15 max) : "), //faire une fonction avec message d'erreur si date >j+15
+                {                   
                     DateRetour = ConsoleSaisie.SaisirDateObligatoire("Date retour : "),
                     PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Places disponibles (9 max) : "),// faire fonction avec message erreur si nb>9
                     TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Tarif tout compris : "),
 
                 };
+
+                var dateAller = ConsoleSaisie.SaisirDateObligatoire("Date aller (j+15 max) : ");
+                TimeSpan differenceEntreAujEtDateAllaer = dateAller - DateTime.Now;
+
+                    if ((int)differenceEntreAujEtDateAllaer.TotalDays > 15)
+                    {
+                        Console.WriteLine("La date saisie est incorrecte");
+                    }
+                    else
+                    {                        
+                        voyage.DateAller = dateAller;
+                    }
+                
                 db.Destinations.Add(destination);
                 db.AgencesVoyage.Add(agence);
                 db.Voyages.Add(voyage);
@@ -92,5 +117,14 @@ namespace BoVoyage2.UI
 
             }
         }
+        private void RechercherVoyage()
+        { 
+           
+        }
+        private void SupprimerVoyage()
+        {
+
+        }
+
     }
 }

@@ -24,5 +24,11 @@ namespace BoVoyage2.Metier
         [ForeignKey("NumeroUniqueAgence")]
         public virtual AgencesVoyage AgencesVoyage { get; set; }
         public int NumeroUniqueAgence { get; set; }
+
+        public void Reserver(int places)
+        {
+            var placesReservees = (9 - PlacesDisponibles);
+            Console.WriteLine($"Il y a {placesReservees} pour ce voyage");
+        }
     }
 }

@@ -90,11 +90,23 @@ namespace BoVoyage2.UI
                     PrixTotal = ConsoleSaisie.SaisirEntierObligatoire("PrixTotal: "),
 
                 };
+                var assurance = ConsoleSaisie.SaisirChaineObligatoire("Shouhaitez vous souscrire à l'assurance? 1: Oui 0: Non");
+                if (assurance == "1") 
+                {
+                    reservation.Assurance = true;
+                    Console.WriteLine("Vous avez souscrit à une assurance pour ce voyage");
+                }
+                else
+                {
+                    reservation.Assurance = false;
+                    Console.WriteLine("Vous n'avez pas d'assurance pour ce voyage");
+                }
                 reservation.NumeroUniqueClient = numeroUniqueClient;
                 reservation.NumeroUniqueVoyage = numeroUniqueVoyage;
                 db.DossiersReservation.Add(reservation);
                 db.SaveChanges();
             }
+
 
         }
         private void RechercherReservation()
@@ -105,6 +117,8 @@ namespace BoVoyage2.UI
         {
             ConsoleHelper.AfficherEntete("Supprimer une reservation");
         }
+
+        
 
 
 
