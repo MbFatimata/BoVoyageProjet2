@@ -24,7 +24,7 @@ namespace BoVoyage2.Metier
         public virtual Voyages Voyages { get; set; }
         public int NumeroUniqueVoyage { get; set; }
 
-        public enum EtatDossierReservation
+        public enum EtatDossierReservation : byte
         {
             enAttente = 0,
             enCours = 1,

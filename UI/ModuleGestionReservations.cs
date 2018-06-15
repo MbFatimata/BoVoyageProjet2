@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BoVoyage.Framework.UI;
 using BoVoyage2.Metier;
 using BoVoyage2.Dal;
@@ -120,9 +119,21 @@ namespace BoVoyage2.UI
                 db.SaveChanges();
             }
         }
+        public void Accepter()
+        {
+            //(byte)EtatDossierReservation.acceptee=3;
+            //(byte)RaisonAnnulationDossier.client et  (byte)RaisonAnnulationDossier.placesInsuffisantes ont des valeurs NULL
+        }
 
+        public void Annuler ()
+        {
+            //(byte)EtatDossierReservation.refusee=2;
+            
+        }
+         public void ValiderSolvabilite ()
+        {
 
-
+        }
 
     }
 }

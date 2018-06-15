@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BoVoyage.Framework.UI;
 using BoVoyage2.Metier;
 using BoVoyage2.Dal;
 using System.Linq;
-using BoVoyage2.UI;
+
 
 namespace BoVoyage2.UI
 {
