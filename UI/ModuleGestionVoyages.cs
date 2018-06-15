@@ -219,10 +219,6 @@ namespace BoVoyage2.UI
                 db.Voyages.Add(voyage);
                 db.SaveChanges();
 
-
-
-                //INITIALISATION DE DONNEES
-
             }
         }
     }

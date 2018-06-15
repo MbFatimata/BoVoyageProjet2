@@ -31,6 +31,16 @@ namespace BoVoyage2.UI
                 AfficherLigneRetourMenuApresExecution = false,
                 FonctionAExecuter = this.moduleGestionVoyages.Demarrer
             });
+            this.menuPrincipal.AjouterElement(new ElementMenu("3", "Gestion Participants")
+            {
+                AfficherLigneRetourMenuApresExecution = false,
+                FonctionAExecuter = this.moduleGestionParticipants.Demarrer
+            });
+            this.menuPrincipal.AjouterElement(new ElementMenu("4", "Gestion Reservations")
+            {
+                AfficherLigneRetourMenuApresExecution = false,
+                FonctionAExecuter = this.moduleGestionReservations.Demarrer
+            });
             this.menuPrincipal.AjouterElement(new ElementMenuQuitterMenu("Q", "Quitter")
             {
                 FonctionAExecuter = () => Environment.Exit(1)
