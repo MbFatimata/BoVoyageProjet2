@@ -119,6 +119,9 @@ namespace BoVoyage2.UI
         }
         private void RechercherVoyage()
         {
+            ConsoleHelper.AfficherEntete("Rechercher des voyages");
+
+            // Fonction non réalisée (il était question de pouvoir rechercher par plusieurs crtières)
 
         }
         private void SupprimerVoyage()

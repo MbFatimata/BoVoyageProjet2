@@ -101,6 +101,8 @@ namespace BoVoyage2.UI
         private void RechercherParticipant()
         {
             ConsoleHelper.AfficherEntete("Rechercher un participant");
+
+            // Fonction non réalisée (il était question de pouvoir rechercher par nom, mail (pour le phoning, ), etc
         }
         private void SupprimerParticipant()
         {
