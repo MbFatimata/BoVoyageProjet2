@@ -120,6 +120,9 @@ namespace BoVoyage2.UI
                 db.Clients.Attach(client);
                 db.Clients.Remove(client);
                 db.SaveChanges();
+
+                Console.WriteLine();
+                Console.WriteLine("Client supprimé !");
             }
         }
     }
