@@ -105,6 +105,26 @@ namespace BoVoyage2.UI
         private void SupprimerParticipant()
         {
             ConsoleHelper.AfficherEntete("Supprimer un participant");
+
+            var liste = Application.GetBaseDonnees().Participants.ToList();
+            ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetier);
+
+            using (var db = new BaseDonnees())
+            {
+                var participant = new Participants
+                {
+                    NumeroUniqueParticipant = ConsoleSaisie.SaisirEntierObligatoire("Entrez l'Id du participant à supprimer :")
+                };
+
+                db.Participants.Attach(participant);
+                db.Participants.Remove(participant);
+                db.SaveChanges();
+
+                Console.WriteLine();
+                Console.WriteLine("Participant supprimé !");
+            }
+
         }
     }
 }
+
