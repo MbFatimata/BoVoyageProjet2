@@ -3,7 +3,7 @@ using BoVoyage.Framework.UI;
 using BoVoyage2.Metier;
 using BoVoyage2.Dal;
 using System.Linq;
-
+using System;
 
 namespace BoVoyage2.UI
 {
