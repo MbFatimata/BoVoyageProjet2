@@ -69,28 +69,28 @@ namespace BoVoyage2.UI
                     Continent = "Europe",
                     Pays = "France",
                     Region = "Normandie",
-                    Description ="Venez visiter notre manifique région",
+                    Description ="Venez visiter notre magnifique région",
                 };
                 var destination2 = new Destinations
                 {
                     Continent = "Afrique",
                     Pays = "Maroc",
                     Region = "Marrakech et ses alentours",
-                    Description = "Venez visiter notre manifique région",
+                    Description = "Venez visiter notre magnifique région",
                 };
                 var destination3 = new Destinations
                 {
                     Continent = "Europe",
                     Pays = "Allemagne",
-                    Region = "Baviere et ses alentours",
-                    Description = "Venez visiter notre manifique région",
+                    Region = "Bavière et ses alentours",
+                    Description = "Venez visiter notre magnifique région",
                 };
                 var destination4 = new Destinations
                 {
-                    Continent = "Amerique",
+                    Continent = "Amérique",
                     Pays = "Etats-Unis",
                     Region = "Texas",
-                    Description = "Venez visiter notre manifique région",
+                    Description = "Venez visiter notre magnifique état",
                 };
                 var agence1 = new AgencesVoyage
                 {
