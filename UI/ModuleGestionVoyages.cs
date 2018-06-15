@@ -33,7 +33,7 @@ namespace BoVoyage2.UI
 
         private void InitialiserMenu()
         {
-            this.menu = new Menu("Gestion des contrats");
+            this.menu = new Menu("Gestion des voyages");
             this.menu.AjouterElement(new ElementMenu("1", "Afficher les voyages")
             {
                 FonctionAExecuter = this.AfficherVoyage
@@ -57,7 +57,7 @@ namespace BoVoyage2.UI
         public void AfficherVoyage()
         {
 
-            ConsoleHelper.AfficherEntete("Afficher Voyages");
+            ConsoleHelper.AfficherEntete("Afficher voyages");
 
             //Initialisation de donnees
             using (var db = new BaseDonnees())
@@ -67,28 +67,28 @@ namespace BoVoyage2.UI
                     Continent = "Europe",
                     Pays = "France",
                     Region = "Normandie",
-                    Description = "Venez visiter notre manifique région",
+                    Description = "Venez visiter notre magnifique région",
                 };
                 var destination2 = new Destinations
                 {
                     Continent = "Afrique",
                     Pays = "Maroc",
                     Region = "Marrakech et ses alentours",
-                    Description = "Venez visiter notre manifique région",
+                    Description = "Venez visiter notre magnifique région",
                 };
                 var destination3 = new Destinations
                 {
                     Continent = "Europe",
                     Pays = "Allemagne",
-                    Region = "Baviere et ses alentours",
-                    Description = "Venez visiter notre manifique région",
+                    Region = "Bavière et ses alentours",
+                    Description = "Venez visiter notre magnifique région",
                 };
                 var destination4 = new Destinations
                 {
-                    Continent = "Amerique",
+                    Continent = "Amérique",
                     Pays = "Etats-Unis",
                     Region = "Texas",
-                    Description = "Venez visiter notre manifique région",
+                    Description = "Venez visiter notre magnifique région",
                 };
                 var agence1 = new AgencesVoyage
                 {
@@ -192,7 +192,7 @@ namespace BoVoyage2.UI
 
         public void AjouterVoyage()
         {
-            ConsoleHelper.AfficherEntete("Ajouter un Voyage");
+            ConsoleHelper.AfficherEntete("Ajouter un voyage");
             using (var db = new BaseDonnees())
             {
                 var destination = new Destinations()
@@ -210,7 +210,7 @@ namespace BoVoyage2.UI
                 {
                     DateAller = ConsoleSaisie.SaisirDateObligatoire("Date aller (j+15 max) : "), //faire une fonction avec message d'erreur si date >j+15
                     DateRetour = ConsoleSaisie.SaisirDateObligatoire("Date retour : "),
-                    PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Places Disponibles (9 max) : "),// faire fonction avec message erreur si nb>9
+                    PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Places disponibles (9 max) : "),// faire fonction avec message erreur si nb>9
                     TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Tarif tout compris : "),
 
                 };
