@@ -102,6 +102,8 @@ namespace BoVoyage2.UI
         private void RechercherClients()
         {
             ConsoleHelper.AfficherEntete("Rechercher des clients");
+
+            // Fonction non réalisée (il était question de pouvoir rechercher par plusieurs crtières)
         }
         private void SupprimerClient()
         {
@@ -120,6 +122,9 @@ namespace BoVoyage2.UI
                 db.Clients.Attach(client);
                 db.Clients.Remove(client);
                 db.SaveChanges();
+
+                Console.WriteLine();
+                Console.WriteLine("Client supprimé !");
             }
         }
     }

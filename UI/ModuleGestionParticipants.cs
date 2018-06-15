@@ -14,16 +14,16 @@ namespace BoVoyage2.UI
         private static readonly List<InformationAffichage> strategieAffichageEntitesMetier =
             new List<InformationAffichage>
             {
-                InformationAffichage.Creer<Participants>(x=>x.NumeroUniqueParticipant, "NumeroUniqueParticipant", 30),
-                InformationAffichage.Creer<Participants>(x=>x.NumeroUniqueDossier, "NumeroUniqueDossier", 30),
-                InformationAffichage.Creer<Participants>(x=>x.Reduction, "Reduction", 10),
-                InformationAffichage.Creer<Participants>(x=>x.Nom, "Nom", 10),
-                InformationAffichage.Creer<Participants>(x=>x.Prenom, "Prenom", 10),
-                InformationAffichage.Creer<Participants>(x=>x.Adresse, "Adresse", 20),
-                InformationAffichage.Creer<Participants>(x=>x.Civilite, "Civilite", 10),
-                InformationAffichage.Creer<Participants>(x=>x.Telephone, "Telephone", 10),
-                InformationAffichage.Creer<Participants>(x=>x.DateNaissance, "DateNaissance", 15),
-                InformationAffichage.Creer<Participants>(x=>x.Age, "Age", 3),
+                InformationAffichage.Creer<Participants>(x=>x.NumeroUniqueParticipant, "Id Participant", 30),
+                InformationAffichage.Creer<Participants>(x=>x.NumeroUniqueDossier, "Id Dossier réservation", 30),
+                InformationAffichage.Creer<Participants>(x=>x.Reduction, "Réduction", 20),
+                InformationAffichage.Creer<Participants>(x=>x.Nom, "Nom", 15),
+                InformationAffichage.Creer<Participants>(x=>x.Prenom, "Prénom", 15),
+                InformationAffichage.Creer<Participants>(x=>x.Adresse, "Adresse", 30),
+                InformationAffichage.Creer<Participants>(x=>x.Civilite, "Civilité", 10),
+                InformationAffichage.Creer<Participants>(x=>x.Telephone, "Téléphone", 15),
+                InformationAffichage.Creer<Participants>(x=>x.DateNaissance, "Date de naissance", 20),
+                InformationAffichage.Creer<Participants>(x=>x.Age, "Age", 5),
             };
         private Menu menu;
 
@@ -36,7 +36,7 @@ namespace BoVoyage2.UI
 
         private void InitialiserMenu()
         {
-            this.menu = new Menu("Gestion 1");
+            this.menu = new Menu("Gestion des participants");
             this.menu.AjouterElement(new ElementMenu("1", "Afficher les participants")
             {
                 FonctionAExecuter = this.AfficherParticipants
@@ -100,10 +100,32 @@ namespace BoVoyage2.UI
         private void RechercherParticipant()
         {
             ConsoleHelper.AfficherEntete("Rechercher un participant");
+
+            // Fonction non réalisée (il était question de pouvoir rechercher par nom, mail (pour le phoning, ), etc
         }
         private void SupprimerParticipant()
         {
             ConsoleHelper.AfficherEntete("Supprimer un participant");
+
+            var liste = Application.GetBaseDonnees().Participants.ToList();
+            ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetier);
+
+            using (var db = new BaseDonnees())
+            {
+                var participant = new Participants
+                {
+                    NumeroUniqueParticipant = ConsoleSaisie.SaisirEntierObligatoire("Entrez l'Id du participant à supprimer :")
+                };
+
+                db.Participants.Attach(participant);
+                db.Participants.Remove(participant);
+                db.SaveChanges();
+
+                Console.WriteLine();
+                Console.WriteLine("Participant supprimé !");
+            }
+
         }
     }
 }
+
