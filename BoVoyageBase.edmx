@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BoVoyageModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BoVoyageModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AgencesVoyage">
           <Key>
             <PropertyRef Name="NumeroUniqueAgence" />
@@ -26,7 +26,7 @@
           </Key>
           <Property Name="NumeroUniqueClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Civilité" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Civilite" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Nom" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Prenom" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Adresse" Type="varchar" MaxLength="150" Nullable="false" />
@@ -48,8 +48,8 @@
           <Key>
             <PropertyRef Name="NumeroUniqueDossier" />
           </Key>
-          <Property Name="NumeroUniqueDossier" Type="int" Nullable="false" />
-          <Property Name="NumeroUniqueClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumeroUniqueDossier" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumeroUniqueClient" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NumeroCarteBancaire" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PrixTotal" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="NumeroUniqueVoyage" Type="int" Nullable="false" />
@@ -62,8 +62,8 @@
           </Key>
           <Property Name="NumeroUniqueParticipant" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NumeroUniqueDossier" Type="int" Nullable="false" />
-          <Property Name="Reduction" Type="float" Nullable="false" />
-          <Property Name="Civilité" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Reduction" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Civilite" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Nom" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Prenom" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Adresse" Type="varchar" MaxLength="150" Nullable="false" />
@@ -188,8 +188,7 @@
             <End Role="Voyages" EntitySet="Voyages" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BoVoyageModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -201,7 +200,7 @@
           <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Voyages" Relationship="Self.FK_Voyages_AgencesVoyage" FromRole="AgencesVoyage" ToRole="Voyages" />
         </EntityType>
-        <EntityType Name="Assurances">
+        <EntityType Name="Assurance">
           <Key>
             <PropertyRef Name="NumeroUniqueAssurance" />
           </Key>
@@ -210,22 +209,22 @@
           <Property Name="NumeroUniqueDossier" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DossiersReservation" Relationship="Self.FK_Assurances_DossiersReservation1" FromRole="Assurances" ToRole="DossiersReservation" />
         </EntityType>
-        <EntityType Name="Clients">
+        <EntityType Name="Client">
           <Key>
             <PropertyRef Name="NumeroUniqueClient" />
           </Key>
           <Property Name="NumeroUniqueClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Civilité" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Civilite" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Adresse" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DateNaissance" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Age" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DossiersReservation" Relationship="Self.FK_DossiersReservation_Clients" FromRole="Clients" ToRole="DossiersReservation" />
+          <NavigationProperty Name="DossiersReservations" Relationship="Self.FK_DossiersReservation_Clients" FromRole="Clients" ToRole="DossiersReservation" />
         </EntityType>
-        <EntityType Name="Destinations">
+        <EntityType Name="Destination">
           <Key>
             <PropertyRef Name="NumeroUniqueDestination" />
           </Key>
@@ -247,19 +246,19 @@
           <Property Name="NumeroUniqueVoyage" Type="Int32" Nullable="false" />
           <Property Name="NombreParticipant" Type="Int32" Nullable="false" />
           <Property Name="NumeroUniqueAssurance" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Assurances" Relationship="Self.FK_Assurances_DossiersReservation1" FromRole="DossiersReservation" ToRole="Assurances" />
-          <NavigationProperty Name="Clients" Relationship="Self.FK_DossiersReservation_Clients" FromRole="DossiersReservation" ToRole="Clients" />
-          <NavigationProperty Name="Voyages" Relationship="Self.FK_DossiersReservation_Voyages" FromRole="DossiersReservation" ToRole="Voyages" />
+          <NavigationProperty Name="Assurance" Relationship="Self.FK_Assurances_DossiersReservation1" FromRole="DossiersReservation" ToRole="Assurances" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_DossiersReservation_Clients" FromRole="DossiersReservation" ToRole="Clients" />
+          <NavigationProperty Name="Voyage" Relationship="Self.FK_DossiersReservation_Voyages" FromRole="DossiersReservation" ToRole="Voyages" />
           <NavigationProperty Name="Participants" Relationship="Self.FK_Participants_DossiersReservation" FromRole="DossiersReservation" ToRole="Participants" />
         </EntityType>
-        <EntityType Name="Participants">
+        <EntityType Name="Participant">
           <Key>
             <PropertyRef Name="NumeroUniqueParticipant" />
           </Key>
           <Property Name="NumeroUniqueParticipant" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NumeroUniqueDossier" Type="Int32" Nullable="false" />
-          <Property Name="Reduction" Type="Double" Nullable="false" />
-          <Property Name="Civilité" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Reduction" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Civilite" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Adresse" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
@@ -268,7 +267,7 @@
           <Property Name="Age" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DossiersReservation" Relationship="Self.FK_Participants_DossiersReservation" FromRole="Participants" ToRole="DossiersReservation" />
         </EntityType>
-        <EntityType Name="Voyages">
+        <EntityType Name="Voyage">
           <Key>
             <PropertyRef Name="NumeroUniqueVoyage" />
           </Key>
@@ -280,12 +279,12 @@
           <Property Name="PlacesDisponibles" Type="Int32" Nullable="false" />
           <Property Name="TarifToutCompris" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <NavigationProperty Name="AgencesVoyage" Relationship="Self.FK_Voyages_AgencesVoyage" FromRole="Voyages" ToRole="AgencesVoyage" />
-          <NavigationProperty Name="Destinations" Relationship="Self.FK_Voyages_Destinations" FromRole="Voyages" ToRole="Destinations" />
-          <NavigationProperty Name="DossiersReservation" Relationship="Self.FK_DossiersReservation_Voyages" FromRole="Voyages" ToRole="DossiersReservation" />
+          <NavigationProperty Name="Destination" Relationship="Self.FK_Voyages_Destinations" FromRole="Voyages" ToRole="Destinations" />
+          <NavigationProperty Name="DossiersReservations" Relationship="Self.FK_DossiersReservation_Voyages" FromRole="Voyages" ToRole="DossiersReservation" />
         </EntityType>
         <Association Name="FK_Voyages_AgencesVoyage">
           <End Role="AgencesVoyage" Type="Self.AgencesVoyage" Multiplicity="1" />
-          <End Role="Voyages" Type="Self.Voyages" Multiplicity="*" />
+          <End Role="Voyages" Type="Self.Voyage" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AgencesVoyage">
               <PropertyRef Name="NumeroUniqueAgence" />
@@ -297,7 +296,7 @@
         </Association>
         <Association Name="FK_Assurances_DossiersReservation1">
           <End Role="DossiersReservation" Type="Self.DossiersReservation" Multiplicity="1" />
-          <End Role="Assurances" Type="Self.Assurances" Multiplicity="0..1" />
+          <End Role="Assurances" Type="Self.Assurance" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="DossiersReservation">
               <PropertyRef Name="NumeroUniqueDossier" />
@@ -308,7 +307,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DossiersReservation_Clients">
-          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Client" Multiplicity="1" />
           <End Role="DossiersReservation" Type="Self.DossiersReservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clients">
@@ -320,8 +319,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Voyages_Destinations">
-          <End Role="Destinations" Type="Self.Destinations" Multiplicity="1" />
-          <End Role="Voyages" Type="Self.Voyages" Multiplicity="*" />
+          <End Role="Destinations" Type="Self.Destination" Multiplicity="1" />
+          <End Role="Voyages" Type="Self.Voyage" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Destinations">
               <PropertyRef Name="NumeroUniqueDestination" />
@@ -332,7 +331,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DossiersReservation_Voyages">
-          <End Role="Voyages" Type="Self.Voyages" Multiplicity="1" />
+          <End Role="Voyages" Type="Self.Voyage" Multiplicity="1" />
           <End Role="DossiersReservation" Type="Self.DossiersReservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Voyages">
@@ -345,7 +344,7 @@
         </Association>
         <Association Name="FK_Participants_DossiersReservation">
           <End Role="DossiersReservation" Type="Self.DossiersReservation" Multiplicity="1" />
-          <End Role="Participants" Type="Self.Participants" Multiplicity="*" />
+          <End Role="Participants" Type="Self.Participant" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DossiersReservation">
               <PropertyRef Name="NumeroUniqueDossier" />
@@ -356,24 +355,24 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BoVoyageEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AgencesVoyage" EntityType="Self.AgencesVoyage" />
-          <EntitySet Name="Assurances" EntityType="Self.Assurances" />
-          <EntitySet Name="Clients" EntityType="Self.Clients" />
-          <EntitySet Name="Destinations" EntityType="Self.Destinations" />
-          <EntitySet Name="DossiersReservation" EntityType="Self.DossiersReservation" />
-          <EntitySet Name="Participants" EntityType="Self.Participants" />
-          <EntitySet Name="Voyages" EntityType="Self.Voyages" />
+          <EntitySet Name="AgencesVoyages" EntityType="Self.AgencesVoyage" />
+          <EntitySet Name="Assurances" EntityType="Self.Assurance" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Destinations" EntityType="Self.Destination" />
+          <EntitySet Name="DossiersReservations" EntityType="Self.DossiersReservation" />
+          <EntitySet Name="Participants" EntityType="Self.Participant" />
+          <EntitySet Name="Voyages" EntityType="Self.Voyage" />
           <AssociationSet Name="FK_Voyages_AgencesVoyage" Association="Self.FK_Voyages_AgencesVoyage">
-            <End Role="AgencesVoyage" EntitySet="AgencesVoyage" />
+            <End Role="AgencesVoyage" EntitySet="AgencesVoyages" />
             <End Role="Voyages" EntitySet="Voyages" />
           </AssociationSet>
           <AssociationSet Name="FK_Assurances_DossiersReservation1" Association="Self.FK_Assurances_DossiersReservation1">
-            <End Role="DossiersReservation" EntitySet="DossiersReservation" />
+            <End Role="DossiersReservation" EntitySet="DossiersReservations" />
             <End Role="Assurances" EntitySet="Assurances" />
           </AssociationSet>
           <AssociationSet Name="FK_DossiersReservation_Clients" Association="Self.FK_DossiersReservation_Clients">
             <End Role="Clients" EntitySet="Clients" />
-            <End Role="DossiersReservation" EntitySet="DossiersReservation" />
+            <End Role="DossiersReservation" EntitySet="DossiersReservations" />
           </AssociationSet>
           <AssociationSet Name="FK_Voyages_Destinations" Association="Self.FK_Voyages_Destinations">
             <End Role="Destinations" EntitySet="Destinations" />
@@ -381,10 +380,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_DossiersReservation_Voyages" Association="Self.FK_DossiersReservation_Voyages">
             <End Role="Voyages" EntitySet="Voyages" />
-            <End Role="DossiersReservation" EntitySet="DossiersReservation" />
+            <End Role="DossiersReservation" EntitySet="DossiersReservations" />
           </AssociationSet>
           <AssociationSet Name="FK_Participants_DossiersReservation" Association="Self.FK_Participants_DossiersReservation">
-            <End Role="DossiersReservation" EntitySet="DossiersReservation" />
+            <End Role="DossiersReservation" EntitySet="DossiersReservations" />
             <End Role="Participants" EntitySet="Participants" />
           </AssociationSet>
         </EntityContainer>
@@ -394,7 +393,7 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BoVoyageModelStoreContainer" CdmEntityContainer="BoVoyageEntities">
-          <EntitySetMapping Name="AgencesVoyage">
+          <EntitySetMapping Name="AgencesVoyages">
             <EntityTypeMapping TypeName="BoVoyageModel.AgencesVoyage">
               <MappingFragment StoreEntitySet="AgencesVoyage">
                 <ScalarProperty Name="NumeroUniqueAgence" ColumnName="NumeroUniqueAgence" />
@@ -403,7 +402,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Assurances">
-            <EntityTypeMapping TypeName="BoVoyageModel.Assurances">
+            <EntityTypeMapping TypeName="BoVoyageModel.Assurance">
               <MappingFragment StoreEntitySet="Assurances">
                 <ScalarProperty Name="NumeroUniqueAssurance" ColumnName="NumeroUniqueAssurance" />
                 <ScalarProperty Name="SouscriptionAnnulation" ColumnName="SouscriptionAnnulation" />
@@ -412,11 +411,11 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Clients">
-            <EntityTypeMapping TypeName="BoVoyageModel.Clients">
+            <EntityTypeMapping TypeName="BoVoyageModel.Client">
               <MappingFragment StoreEntitySet="Clients">
                 <ScalarProperty Name="NumeroUniqueClient" ColumnName="NumeroUniqueClient" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Civilité" ColumnName="Civilité" />
+                <ScalarProperty Name="Civilite" ColumnName="Civilite" />
                 <ScalarProperty Name="Nom" ColumnName="Nom" />
                 <ScalarProperty Name="Prenom" ColumnName="Prenom" />
                 <ScalarProperty Name="Adresse" ColumnName="Adresse" />
@@ -427,7 +426,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Destinations">
-            <EntityTypeMapping TypeName="BoVoyageModel.Destinations">
+            <EntityTypeMapping TypeName="BoVoyageModel.Destination">
               <MappingFragment StoreEntitySet="Destinations">
                 <ScalarProperty Name="NumeroUniqueDestination" ColumnName="NumeroUniqueDestination" />
                 <ScalarProperty Name="Continent" ColumnName="Continent" />
@@ -437,7 +436,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DossiersReservation">
+          <EntitySetMapping Name="DossiersReservations">
             <EntityTypeMapping TypeName="BoVoyageModel.DossiersReservation">
               <MappingFragment StoreEntitySet="DossiersReservation">
                 <ScalarProperty Name="NumeroUniqueDossier" ColumnName="NumeroUniqueDossier" />
@@ -451,12 +450,12 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Participants">
-            <EntityTypeMapping TypeName="BoVoyageModel.Participants">
+            <EntityTypeMapping TypeName="BoVoyageModel.Participant">
               <MappingFragment StoreEntitySet="Participants">
                 <ScalarProperty Name="NumeroUniqueParticipant" ColumnName="NumeroUniqueParticipant" />
                 <ScalarProperty Name="NumeroUniqueDossier" ColumnName="NumeroUniqueDossier" />
                 <ScalarProperty Name="Reduction" ColumnName="Reduction" />
-                <ScalarProperty Name="Civilité" ColumnName="Civilité" />
+                <ScalarProperty Name="Civilite" ColumnName="Civilite" />
                 <ScalarProperty Name="Nom" ColumnName="Nom" />
                 <ScalarProperty Name="Prenom" ColumnName="Prenom" />
                 <ScalarProperty Name="Adresse" ColumnName="Adresse" />
@@ -467,7 +466,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Voyages">
-            <EntityTypeMapping TypeName="BoVoyageModel.Voyages">
+            <EntityTypeMapping TypeName="BoVoyageModel.Voyage">
               <MappingFragment StoreEntitySet="Voyages">
                 <ScalarProperty Name="NumeroUniqueVoyage" ColumnName="NumeroUniqueVoyage" />
                 <ScalarProperty Name="NumeroUniqueDestination" ColumnName="NumeroUniqueDestination" />
@@ -493,7 +492,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />

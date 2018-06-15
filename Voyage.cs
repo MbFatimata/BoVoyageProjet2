@@ -12,12 +12,12 @@ namespace ExempleUtilisationBoVoyageFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class Voyages
+    public partial class Voyage
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Voyages()
+        public Voyage()
         {
-            this.DossiersReservation = new HashSet<DossiersReservation>();
+            this.DossiersReservations = new HashSet<DossiersReservation>();
         }
     
         public int NumeroUniqueVoyage { get; set; }
@@ -29,8 +29,8 @@ namespace ExempleUtilisationBoVoyageFramework
         public decimal TarifToutCompris { get; set; }
     
         public virtual AgencesVoyage AgencesVoyage { get; set; }
-        public virtual Destinations Destinations { get; set; }
+        public virtual Destination Destination { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DossiersReservation> DossiersReservation { get; set; }
+        public virtual ICollection<DossiersReservation> DossiersReservations { get; set; }
     }
 }

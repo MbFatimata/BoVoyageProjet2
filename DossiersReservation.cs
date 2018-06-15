@@ -17,7 +17,7 @@ namespace ExempleUtilisationBoVoyageFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DossiersReservation()
         {
-            this.Participants = new HashSet<Participants>();
+            this.Participants = new HashSet<Participant>();
         }
     
         public int NumeroUniqueDossier { get; set; }
@@ -28,10 +28,10 @@ namespace ExempleUtilisationBoVoyageFramework
         public int NombreParticipant { get; set; }
         public int NumeroUniqueAssurance { get; set; }
     
-        public virtual Assurances Assurances { get; set; }
-        public virtual Clients Clients { get; set; }
-        public virtual Voyages Voyages { get; set; }
+        public virtual Assurance Assurance { get; set; }
+        public virtual Client Client { get; set; }
+        public virtual Voyage Voyage { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Participants> Participants { get; set; }
+        public virtual ICollection<Participant> Participants { get; set; }
     }
 }

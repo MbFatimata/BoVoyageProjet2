@@ -1,15 +1,20 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace BoVoyage2.Metier
 {
+    [Table("DossiersReservation")]
     public class DossiersReservation
     {
+        
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int NumeroUniqueDossier { get; set; }
         public string NumeroCarteBancaire { get; set; }
         public decimal PrixTotal { get; set; }
         public int NombreParticipant { get; set; }
+        public bool Assurance { get; set; }
 
         [ForeignKey("NumeroUniqueClient")]
         public virtual Clients Clients { get; set; }

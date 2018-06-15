@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BoVoyage.Framework.UI;
 using BoVoyage2.Metier;
 using BoVoyage2.Dal;
@@ -36,7 +34,7 @@ namespace BoVoyage2.UI
             this.menu = new Menu("Gestion des voyages");
             this.menu.AjouterElement(new ElementMenu("1", "Afficher les voyages")
             {
-                FonctionAExecuter = this.AfficherVoyage
+                FonctionAExecuter = this.AfficherVoyages
             });
             this.menu.AjouterElement(new ElementMenu("2", "Ajouter un voyage")
             {
@@ -54,137 +52,10 @@ namespace BoVoyage2.UI
 
             this.menu.Afficher();
         }
-        public void AfficherVoyage()
+        public void AfficherVoyages()
         {
 
             ConsoleHelper.AfficherEntete("Afficher voyages");
-
-            //Initialisation de donnees
-            using (var db = new BaseDonnees())
-            {
-                var destination1 = new Destinations
-                {
-                    Continent = "Europe",
-                    Pays = "France",
-                    Region = "Normandie",
-                    Description = "Venez visiter notre magnifique région",
-                };
-                var destination2 = new Destinations
-                {
-                    Continent = "Afrique",
-                    Pays = "Maroc",
-                    Region = "Marrakech et ses alentours",
-                    Description = "Venez visiter notre magnifique région",
-                };
-                var destination3 = new Destinations
-                {
-                    Continent = "Europe",
-                    Pays = "Allemagne",
-                    Region = "Bavière et ses alentours",
-                    Description = "Venez visiter notre magnifique région",
-                };
-                var destination4 = new Destinations
-                {
-                    Continent = "Amérique",
-                    Pays = "Etats-Unis",
-                    Region = "Texas",
-                    Description = "Venez visiter notre magnifique région",
-                };
-                var agence1 = new AgencesVoyage
-                {
-                    Nom = "Nouvelles frontières",
-                };
-                var agence2 = new AgencesVoyage
-                {
-                    Nom = "Thomas Cook",
-                };
-                var agence3 = new AgencesVoyage
-                {
-                    Nom = "Club med",
-                };
-                var voyage1 = new Voyages
-                {
-                    AgencesVoyage = agence1,
-                    Destinations = destination1,
-                    DateAller = DateTime.Today,
-                    DateRetour = new DateTime(2019, 03, 01),
-                    PlacesDisponibles = 9,
-                    TarifToutCompris = 800,
-                    //placesdispo a modifier en faisant methode reserver dans Voyage
-
-                };
-                var voyage2 = new Voyages
-                {
-                    AgencesVoyage = agence2,
-                    Destinations = destination1,
-                    DateAller = DateTime.Today,
-                    DateRetour = new DateTime(2019, 02, 01),
-                    PlacesDisponibles = 9,
-                    TarifToutCompris = 700,
-                    //placesdispo a modifier en faisant methode reserver dans Voyage
-
-                };
-                var voyage3 = new Voyages
-                {
-                    AgencesVoyage = agence1,
-                    Destinations = destination2,
-                    DateAller = DateTime.Today,
-                    DateRetour = new DateTime(2018, 10, 01),
-                    PlacesDisponibles = 5,
-                    TarifToutCompris = 300,
-                    //placesdispo a modifier en faisant methode reserver dans Voyage
-
-                };
-                var voyage4 = new Voyages
-                {
-                    AgencesVoyage = agence3,
-                    Destinations = destination3,
-                    DateAller = new DateTime(2018, 07, 01),
-                    DateRetour = new DateTime(2018, 08, 01),
-                    PlacesDisponibles = 9,
-                    TarifToutCompris = 200,
-                    //placesdispo a modifier en faisant methode reserver dans Voyage
-
-                };
-                var voyage5 = new Voyages
-                {
-                    AgencesVoyage = agence3,
-                    Destinations = destination2,
-                    DateAller = DateTime.Today,
-                    DateRetour = new DateTime(2018, 12, 14),
-                    PlacesDisponibles = 6,
-                    TarifToutCompris = 500,
-                    //placesdispo a modifier en faisant methode reserver dans Voyage
-
-                };
-                var voyage6 = new Voyages
-                {
-                    AgencesVoyage = agence1,
-                    Destinations = destination4,
-                    DateAller = new DateTime(2019, 08, 01),
-                    DateRetour = new DateTime(2019, 10, 01),
-                    PlacesDisponibles = 7,
-                    TarifToutCompris = 800,
-                    //placesdispo a modifier en faisant methode reserver dans Voyage
-
-                };
-
-                db.Destinations.Add(destination1);
-                db.Destinations.Add(destination2);
-                db.Destinations.Add(destination3);
-                db.Destinations.Add(destination4);
-                db.AgencesVoyage.Add(agence1);
-                db.AgencesVoyage.Add(agence2);
-                db.AgencesVoyage.Add(agence3);
-                db.Voyages.Add(voyage1);
-                db.Voyages.Add(voyage2);
-                db.Voyages.Add(voyage3);
-                db.Voyages.Add(voyage4);
-                db.Voyages.Add(voyage5);
-                db.Voyages.Add(voyage6);
-                db.SaveChanges();
-            }
-
 
             var liste = Application.GetBaseDonnees().Voyages.ToList();
             ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetier);

@@ -25,12 +25,12 @@ namespace ExempleUtilisationBoVoyageFramework
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AgencesVoyage> AgencesVoyage { get; set; }
-        public virtual DbSet<Assurances> Assurances { get; set; }
-        public virtual DbSet<Clients> Clients { get; set; }
-        public virtual DbSet<Destinations> Destinations { get; set; }
-        public virtual DbSet<DossiersReservation> DossiersReservation { get; set; }
-        public virtual DbSet<Participants> Participants { get; set; }
-        public virtual DbSet<Voyages> Voyages { get; set; }
+        public virtual DbSet<AgencesVoyage> AgencesVoyages { get; set; }
+        public virtual DbSet<Assurance> Assurances { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
+        public virtual DbSet<Destination> Destinations { get; set; }
+        public virtual DbSet<DossiersReservation> DossiersReservations { get; set; }
+        public virtual DbSet<Participant> Participants { get; set; }
+        public virtual DbSet<Voyage> Voyages { get; set; }
     }
 }

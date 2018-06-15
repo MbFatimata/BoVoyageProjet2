@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
@@ -55,7 +56,6 @@
   <ItemGroup>
     <Compile Include="Dal\BaseDonnees.cs" />
     <Compile Include="Metier\AgencesVoyage.cs" />
-    <Compile Include="Metier\Assurances.cs" />
     <Compile Include="Metier\Clients.cs" />
     <Compile Include="Metier\Destinations.cs" />
     <Compile Include="Metier\DossiersReservation.cs" />

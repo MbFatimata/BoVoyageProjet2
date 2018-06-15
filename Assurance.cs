@@ -12,7 +12,7 @@ namespace ExempleUtilisationBoVoyageFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class Assurances
+    public partial class Assurance
     {
         public int NumeroUniqueAssurance { get; set; }
         public string SouscriptionAnnulation { get; set; }

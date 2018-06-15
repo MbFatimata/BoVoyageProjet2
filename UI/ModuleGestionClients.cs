@@ -33,7 +33,7 @@ namespace BoVoyage2.UI
             this.Application = application;
         }
 
-        private Application Application { get; }
+        public Application Application { get; }
 
         private void InitialiserMenu()
         {
@@ -67,7 +67,7 @@ namespace BoVoyage2.UI
             this.menu.Afficher();
         }
 
-        private void AfficherClients()
+        public void AfficherClients()
         {
             ConsoleHelper.AfficherEntete("Afficher Clients");
             var liste = Application.GetBaseDonnees().Clients.ToList();

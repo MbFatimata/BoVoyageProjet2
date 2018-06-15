@@ -12,12 +12,12 @@ namespace ExempleUtilisationBoVoyageFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class Participants
+    public partial class Participant
     {
         public int NumeroUniqueParticipant { get; set; }
         public int NumeroUniqueDossier { get; set; }
-        public double Reduction { get; set; }
-        public string Civilité { get; set; }
+        public decimal Reduction { get; set; }
+        public string Civilite { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public string Adresse { get; set; }

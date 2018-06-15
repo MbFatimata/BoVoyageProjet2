@@ -9,11 +9,20 @@ namespace BoVoyage2.UI
         private Menu menuPrincipal;
         private ModuleGestionClients moduleGestionClients;
         private ModuleGestionVoyages moduleGestionVoyages;
+        private ModuleGestionParticipants moduleGestionParticipants;
+        private ModuleGestionReservations moduleGestionReservations;
+
+        public ModuleGestionReservations ModuleGestionReservations { get => this.moduleGestionReservations; }
+        public ModuleGestionClients ModuleGestionClients { get => this.moduleGestionClients; }
+        public ModuleGestionVoyages ModuleGestionVoyages { get => this.moduleGestionVoyages; }
+        public ModuleGestionParticipants ModuleGestionParticipants { get => this.moduleGestionParticipants; }
 
         private void InitialiserModules()
         {
             this.moduleGestionClients = new ModuleGestionClients(this);
             this.moduleGestionVoyages = new ModuleGestionVoyages(this);
+            this.moduleGestionParticipants = new ModuleGestionParticipants(this);
+            this.moduleGestionReservations = new ModuleGestionReservations(this);
 
 
         }

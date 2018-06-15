@@ -12,17 +12,17 @@ namespace ExempleUtilisationBoVoyageFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class Clients
+    public partial class Client
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Clients()
+        public Client()
         {
-            this.DossiersReservation = new HashSet<DossiersReservation>();
+            this.DossiersReservations = new HashSet<DossiersReservation>();
         }
     
         public int NumeroUniqueClient { get; set; }
         public string Email { get; set; }
-        public string Civilité { get; set; }
+        public string Civilite { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public string Adresse { get; set; }
@@ -31,6 +31,6 @@ namespace ExempleUtilisationBoVoyageFramework
         public int Age { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DossiersReservation> DossiersReservation { get; set; }
+        public virtual ICollection<DossiersReservation> DossiersReservations { get; set; }
     }
 }

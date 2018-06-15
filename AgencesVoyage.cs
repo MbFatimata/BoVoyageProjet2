@@ -17,13 +17,13 @@ namespace ExempleUtilisationBoVoyageFramework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public AgencesVoyage()
         {
-            this.Voyages = new HashSet<Voyages>();
+            this.Voyages = new HashSet<Voyage>();
         }
     
         public int NumeroUniqueAgence { get; set; }
         public string Nom { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Voyages> Voyages { get; set; }
+        public virtual ICollection<Voyage> Voyages { get; set; }
     }
 }

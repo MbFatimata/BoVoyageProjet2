@@ -12,8 +12,6 @@ namespace BoVoyage2.Dal
 
         public DbSet<AgencesVoyage> AgencesVoyage { get; set; }
 
-        public DbSet<Assurances> Assurances { get; set; }
-
         public DbSet<Clients> Clients { get; set; }
 
         public DbSet<Destinations> Destinations { get; set; }

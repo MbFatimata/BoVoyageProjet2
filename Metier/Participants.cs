@@ -12,7 +12,7 @@ namespace BoVoyage2.Metier
     {
         [Key]
         public int NumeroUniqueParticipant { get; set; }
-        public float Reduction { get; set; }
+        public decimal Reduction { get; set; }
         public string Civilite { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
