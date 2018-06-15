@@ -24,6 +24,20 @@ namespace BoVoyage2.Metier
         public virtual Voyages Voyages { get; set; }
         public int NumeroUniqueVoyage { get; set; }
 
+        public enum EtatDossierReservation
+        {
+            enAttente = 0,
+            enCours = 1,
+            refusee = 2,
+            acceptee = 3
+        }
+
+        public enum RaisonAnnulationDossier
+        {
+            client = 1,
+            placesInsuffisantes = 2,
+        }
+
 
     }
 }
